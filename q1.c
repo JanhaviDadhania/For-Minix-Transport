@@ -5,70 +5,137 @@
 int main(int argc, char *argv[]) {
     int pid;
     int status;
-    char string[11] = "Hello World";
+    int number;
+    int rc = fork();
 
-    // int index = 0;
-    // while(index++ < 11) {
-    //     pid = fork();
-    //     printf("%c PID: %d\n", string[index-1], (int) getpid());
-    //     int status;
-    //     pid = wait(&status);
-    //     break;
-    // }
+    if (rc == 0) {
+        // child no. one to be executed
+        printf("H  %d\n", (int) getpid());
+        int number = rand() % 4;
+        sleep(number + 1);
+        exit(1);
+    }
+    else {
+        wait(NULL);
+        rc = fork();
 
-    if(pid > 0) {
-        printf("H         PID: %d\n", (int) getpid());
-        pid = fork();
-        pid = wait(&status);
+        if(rc == 0) {
+            // no. two to be executed
+            printf("e  %d\n", (int) getpid());
+            int number = rand() % 4;
+            sleep(number + 1);
+            exit(1);
+        }
+        else {
+            wait(NULL);
+            rc = fork();
 
-        if (pid > 0) {
-            printf("E         PID: %d\n", pid);
-            pid = fork();
-            pid = wait(&status);
+            if(rc == 0) {
+                // no. three to be execulted
+                printf("l  %d\n", (int) getpid());
+                int number = rand() % 4;
+                sleep(number + 1);
 
-            if( pid > 0) {
-                printf("L         PID: %d\n", pid);
-                pid = fork();
-                pid = wait(&status);
+                exit(1);
+            }
+            else {
+                wait(NULL);
+                rc = fork();
 
-                if( pid > 0) {
-                    printf("L         PID: %d\n", pid);
-                    pid = fork();
-                    pid = wait(&status);
+                if(rc == 0) {
+                    // no. four to be execulted
+                    printf("l  %d\n", (int) getpid());
+                    int number = rand() % 4;
+                    sleep(number + 1);
 
-                    if( pid > 0) {
-                        printf("O         PID: %d\n", pid);
-                        pid = fork();
-                        pid = wait(&status);
+                    exit(1);
+                }
+                else {
+                    wait(NULL);
+                    rc = fork();
 
-                        if( pid > 0) {
-                            printf("          PID: %d\n", pid);
-                            pid = fork();
-                            pid = wait(&status);
+                    if(rc == 0) {
+                        // no. five to be execulted
+                        printf("o  %d\n", (int) getpid());
+                        int number = rand() % 4;
+                        sleep(number + 1);
 
-                            if( pid > 0) {
-                                printf("W         PID: %d\n", pid);
-                                pid = fork();
-                                pid = wait(&status);
+                        exit(1);
+                    }
+                    else {
+                        wait(NULL);
+                        rc = fork();
 
-                                if( pid > 0) {
-                                    printf("O         PID: %d\n", pid);
-                                    pid = fork();
-                                    pid = wait(&status);
+                        if(rc == 0) {
+                            // no. six to be executed
+                            printf("   %d\n", (int) getpid());
+                            int number = rand() % 4;
+                            sleep(number + 1);
 
-                                    if( pid > 0) {
-                                        printf("R         PID: %d\n", pid);
-                                        pid = fork();
-                                        pid = wait(&status);
+                            exit(1);
+                        }
+                        else {
+                            wait(NULL);
+                            rc = fork();
 
-                                        if( pid > 0) {
-                                            printf("L         PID: %d\n", pid);
-                                            pid = fork();
-                                            pid = wait(&status);
+                            if(rc == 0) {
+                                // no. seven to be executed
+                                printf("W  %d\n", (int) getpid());
+                                int number = rand() % 4;
+                                sleep(number + 1);
 
-                                            if( pid > 0) {
-                                                printf("D         PID: %d\n", pid);
-                                                pid = wait(&status);
+                                exit(1);
+                            }
+                            else {
+                                wait(NULL);
+                                rc = fork();
+
+                                if(rc == 0) {
+                                    // no. eight to be executed
+                                    printf("o  %d\n", (int) getpid());
+                                    int number = rand() % 4;
+                                    sleep(number + 1);
+
+                                    exit(1);
+                                }
+                                else {
+                                    wait(NULL);
+                                    rc = fork();
+
+                                    if(rc == 0) {
+                                        // no. nine to be executed
+                                        printf("r  %d\n", (int) getpid());
+                                        int number = rand() % 4;
+                                        sleep(number + 1);
+
+                                        exit(1);
+                                    }
+                                    else {
+                                        wait(NULL);
+                                        rc = fork();
+
+                                        if(rc == 0) {
+                                            // no. ten to be executed
+                                            printf("l  %d\n", (int) getpid());
+                                            int number = rand() % 4;
+                                            sleep(number + 1);
+
+                                            exit(1);
+                                        }
+                                        else {
+                                            wait(NULL);
+                                            rc = fork();
+
+                                            if(rc == 0) {
+                                                // no. eleven to be executed
+                                                printf("d  %d\n", (int) getpid());
+                                                int number = rand() % 4;
+                                                sleep(number + 1);
+
+                                                exit(1);
+                                            }
+                                            else {
+                                                //THE REAL PARENT PROCESS SPECE :)
                                             }
                                         }
                                     }
@@ -77,43 +144,9 @@ int main(int argc, char *argv[]) {
                         }
                     }
                 }
-
             }
         }
     }
 
-    // int pid;
-    // pid = fork();
-    //
-    // if (pid > 0) {
-    //     printf("Parent : child PID = %d\n", pid);
-    //     int status;
-    //     pid = wait(&status);
-    //     printf("Parent : child %d exited\n", pid);
-    // }
-    // else {
-    //     printf("In child Process\n");
-    //     exit(0);
-    // }
-
-    // **********************************************************************
-
-    // printf("Hello world (pid:%d) \n", (int) getpid());
-    // int rc = fork();
-    //
-    // if (rc < 0) {
-    //     // fork failed
-    //     fprintf(stderr, "fork failed\n");
-    //     exit(1);
-    // }
-    // else if (rc == 0) {
-    //     // child (new Process)
-    //     printf("Hello, I am child (pid:%d) \n", (int) getpid());
-    // }
-    // else {
-    //     // parent goes down this path (main)
-    //     int rc_wait = wait(NULL);
-    //     printf("Hello, I am parent of %d (rc_wait:%d) (pid:%d) \n", rc, rc_wait, (int) getpid());
-    // }
     return 0;
 }

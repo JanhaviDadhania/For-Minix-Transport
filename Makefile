@@ -1,3 +1,3 @@
 hello:
-	@clang q1.c
+	@gmake q1.c
 	@./a.out
