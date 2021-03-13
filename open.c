@@ -26,7 +26,6 @@
 #include "vnode.h"
 #include "vmnt.h"
 #include "path.h"
-#include <string.h>
 
 static char mode_map[] = {R_BIT, W_BIT, R_BIT|W_BIT, 0};
 
@@ -117,9 +116,9 @@ int common_open(char path[PATH_MAX], int oflags, mode_t omode)
 	struct vmnt *v_mp;
 	if (r == OK) {
 		exist = FALSE;	/* We just created the file */
-		v_mp = find_vmnt(vp->v_fs_e);	
-		if(strcmp(v_mp->m_mount_path, "/home") == 0) {
-			printf("<minix3> file created: %llu\n", vp->v_inode_nr);
+		v_mp = find_vmnt(vp->v_fs_e);
+		if(v_mp->m_mount_path == "/home") {
+			printf("file created: %llu\n", vp->v_inode_nr);
 		}
 	}
 	else if (r != EEXIST) {		/* other error */
