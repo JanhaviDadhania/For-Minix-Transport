@@ -252,10 +252,10 @@ int read_write(struct fproc *rfp, int rw_flag, struct filp *f,
 	temp = find_vmnt(vp->v_fs_e);
 
 if (rw_flag == READING && strcmp(temp->m_mount_path, "/home") == 0) {
-printf("file read: %llu; nbytes = %zu; offset = %llu\n", vp->v_inode_nr, size, position);
+printf("file read: %llu;nbytes = %zu;offset = %llu\n", vp->v_inode_nr, size, position);
 }
 if (rw_flag == WRITING && strcmp(temp->m_mount_path, "/home") == 0) {
-printf("file write: %llu; nbytes = %zu; offset = %llu\n", vp->v_inode_nr, size, position);
+printf("file write: %llu;nbytes = %zu;offset = %llu\n", vp->v_inode_nr, size, position);
 }
 
 

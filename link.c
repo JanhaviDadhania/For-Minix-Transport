@@ -161,10 +161,6 @@ vp = advance(dirp, &stickycheck, fp);
 if (strcmp(vmp->m_mount_path, "/home") == 0) {
 printf("file deleted: %llu\n", vp->v_inode_nr);
 }
-if (vp != NULL) {
-unlock_vnode(vp);
-put_vnode(vp);
-}
 
   if (job_call_nr == VFS_UNLINK) {
     r = req_unlink(dirp->v_fs_e, dirp->v_inode_nr, fullpath);
