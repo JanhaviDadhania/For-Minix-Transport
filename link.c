@@ -128,10 +128,8 @@ int do_unlink(void)
 	return(r);
   }
 
-  /* Also, if the sticky bit is set, only the owner of the file or a privileged
-     user is allowed to unlink */
   if ((dirp->v_mode & S_ISVTX) == S_ISVTX) {
-	/* Look up inode of file to unlink to retrieve owner */
+
 	lookup_init(&stickycheck, resolve.l_path, PATH_RET_SYMLINK, &vmp2, &vp);
 	stickycheck.l_vmnt_lock = VMNT_READ;
 	stickycheck.l_vnode_lock = VNODE_READ;
